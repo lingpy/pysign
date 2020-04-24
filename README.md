@@ -1,2 +1,1 @@
-# pysl
-Python library for the manipulation of sign language data
+# pysl: Python library for the manipulation of sign language data
