@@ -35,3 +35,22 @@
      "movement": "" # hammoveo
      }
 }
+
+# Example (3) two-handed sign completely asymmetrical: 
+# one dominant hand, one nondominant hand; orientations, locations,  
+# and movements for each hand
+
+{
+ "                 ":
+     {
+      "symmetry": "",
+      "dominant_hand": "", # hamfinger2
+      "nondominant_hand": "", # hamflathand
+      "dominant_orientation": "", # hamextfingeru,hampalml
+      "nondominant_orientation": "", # hamextfingero,hampalmd
+      "dominant_location": "", # hamshoulders,hamlrat (sequence matters!)
+      "nondominant_location": "", # hamlrat,hamchest (sequence matters!)
+      "dominant_movement": "", # hammovedo
+      "nondominant_movement": "" # hamnomotion
+      }
+ }
