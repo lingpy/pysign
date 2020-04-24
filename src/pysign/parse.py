@@ -3,10 +3,10 @@ Module for parsing segmented HamNoSys transcriptions.
 """
 from pysign.data import HAMNOSYS
 
-def translate(text):
-    return ' '.join(
+def translate(text, sep='.'):
+    return '.'.join(
             HAMNOSYS.get(char, {"Name": '<'+char+'>'})["Name"] for char in
-            text.split())
+            text).replace('.asciispace.', ' ')
 
 
 class Word(object):

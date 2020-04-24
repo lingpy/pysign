@@ -1,4 +1,6 @@
 ID	Name	Unicode	Keyboard
+1	asciispace	0020	
+2	asciiplus	002B	
 36	comma	002C	
 35	fullstop	002E	
 34	query	003F	
