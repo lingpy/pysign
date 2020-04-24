@@ -1,208 +1,208 @@
 ID	Name	Unicode	Keyboard
-36	comma	002C		
-35	fullstop	002E		
-34	query	003F		
-225	altbegin	007B		
-38	metaalt	007C		
-226	altend	007D		
-50	fist	E000	D	
-51	flathand	E001	E	
-52	finger2	E002	F	
-53	finger23	E003	G	
-54	finger23spread	E004	H	
-55	finger2345	E005	I	
-58	pinch12	E006	M	
-59	pinchall	E007	N	
-60	pinch12open	E008	O	
-61	cee12	E009	P	
-62	ceeall	E00A	Q	
-63	ceeopen	E00B	R	
-56	thumboutmod	E00C	J	
-57	thumbacrossmod	E00D	K	
-64	thumbopenmod	E00E	L	
-65	fingerstraightmod	E010	A	
-66	fingerbendmod	E011	B	
-67	fingerhookmod	E012	C	
-69	doublebent	E013	6	
-70	doublehooked	E014	7	
-72	extfingeru	E020		
-73	extfingerur	E021		
-74	extfingerr	E022		
-75	extfingerdr	E023		
-76	extfingerd	E024		
-77	extfingerdl	E025		
-78	extfingerl	E026		
-79	extfingerul	E027		
-80	extfingerol	E028		
-81	extfingero	E029		
-82	extfingeror	E02A		
-83	extfingeril	E02B		
-84	extfingeri	E02C		
-85	extfingerir	E02D		
-86	extfingerui	E02E		
-87	extfingerdi	E02F		
-88	extfingerdo	E030		
-89	extfingeruo	E031		
-96	palmu	E038		
-97	palmur	E039		
-98	palmr	E03A		
-99	palmdr	E03B		
-100	palmd	E03C		
-101	palmdl	E03D		
-102	palml	E03E		
-103	palmul	E03F		
-113	head	E040		
-114	headtop	E041		
-115	forehead	E042		
-116	eyebrows	E043		
-117	eyes	E044		
-118	nose	E045		
-94	nostrils	E046		
-119	ear	E047		
-93	earlobe	E048		
-120	cheek	E049		
-121	lips	E04A		
-109	tongue	E04B		
-110	teeth	E04C		
-122	chin	E04D		
-123	underchin	E04E		
-124	neck	E04F		
-95	shouldertop	E050		
-125	shoulders	E051		
-126	chest	E052		
-111	stomach	E053		
-128	belowstomach	E054		
-129	lrbeside	E058		
-130	lrat	E059		
-158	coreftag	E05A		
-159	corefref	E05B		
-112	neutralspace	E05F		
-131	upperarm	E060		
-132	elbow	E061		
-133	elbowinside	E062		
-134	lowerarm	E063		
-135	wristback	E064		
-136	wristpulse	E065		
-137	thumbball	E066		
-138	palm	E067		
-139	handback	E068		
-145	thumbside	E069		
-146	pinkyside	E06A		
-140	thumb	E070	1	
-141	indexfinger	E071	2	
-142	middlefinger	E072	3	
-143	ringfinger	E073	4	
-144	pinky	E074	5	
-148	fingertip	E075	T	
-149	fingernail	E076	U	
-150	fingerpad	E077	V	
-151	fingermidjoint	E078	W	
-152	fingerbase	E079	X	
-153	fingerside	E07A	Y	
-154	wristtopulse	E07C		(OBSOLETE)
-155	wristtoback	E07D		(OBSOLETE)
-156	wristtothumb	E07E		(OBSOLETE)
-157	wristtopinky	E07F		(OBSOLETE)
-161	moveu	E080		
-162	moveur	E081		
-163	mover	E082		
-164	movedr	E083		
-165	moved	E084		
-166	movedl	E085		
-167	movel	E086		
-168	moveul	E087		
-169	moveol	E088		
-170	moveo	E089		
-171	moveor	E08A		
-172	moveil	E08B		
-173	movei	E08C		
-174	moveir	E08D		
-175	moveui	E08E		
-176	movedi	E08F		
-177	movedo	E090		
-178	moveuo	E091		
-192	circleo	E092		
-193	circlei	E093		
-194	circled	E094		
-195	circleu	E095		
-196	circlel	E096		
-197	circler	E097		
-240	circleul	E098		
-241	circledr	E099		
-242	circleur	E09A		
-243	circledl	E09B		
-244	circleol	E09C		
-245	circleir	E09D		
-246	circleor	E09E		
-247	circleil	E09F		
-249	circleui	E0A0		
-248	circledo	E0A1		
-250	circleuo	E0A2		
-251	circledi	E0A3		
-189	fingerplay	E0A4		
-227	nodding	E0A5		
-228	swinging	E0A6		
-229	twisting	E0A7		
-230	stircw	E0A8		
-231	stirccw	E0A9		
-104	replace	E0AA		
-179	movecross	E0AD		(OBSOLETE)
-180	moveX	E0AE		(OBSOLETE)
-160	nomotion	E0AF		
-39	clocku	E0B0		
-40	clockul	E0B1		
-41	clockl	E0B2		
-42	clockdl	E0B3		
-43	clockd	E0B4		
-44	clockdr	E0B5		
-45	clockr	E0B6		
-46	clockur	E0B7		
-47	clockfull	E0B8		
-183	arcl	E0B9		
-184	arcu	E0BA		
-185	arcr	E0BB		
-186	arcd	E0BC		
-187	wavy	E0BD		
-188	zigzag	E0BE		
-220	ellipseh	E0C0		
-221	ellipseur	E0C1		
-222	ellipsev	E0C2		
-223	ellipseul	E0C3		
-198	increasing	E0C4		
-199	decreasing	E0C5		
-181	smallmod	E0C6		
-182	largemod	E0C7		
-204	fast	E0C8		
-205	slow	E0C9		
-206	tense	E0CA		
-207	rest	E0CB		
-208	halt	E0CC		
-200	close	E0D0		
-201	touch	E0D1		
-202	interlock	E0D2		
-203	cross	E0D3		
-105	armextended	E0D4		
-106	behind	E0D5		
-217	brushing	E0D6		
-209	repeatfromstart	E0D8		
-210	repeatfromstartseveral	E0D9		
-211	repeatcontinue	E0DA		
-212	repeatcontinueseveral	E0DB		
-216	repeatreverse	E0DC		
-215	alternatingmotion	E0DD		
-213	seqbegin	E0E0		
-214	seqend	E0E1		
-190	parbegin	E0E2		
-191	parend	E0E3		
-236	fusionbegin	E0E4		
-237	fusionend	E0E5		
-147	between	E0E6	S	
-37	plus	E0E7		
-48	symmpar	E0E8		
-49	symmlr	E0E9		
-68	nondominant	E0EA		
-218	nonipsi	E0EB		
-107	etc	E0EC		
-108	orirelative	E0ED		
-224	mime	E0F0		
-20	version40	E0F1		
+36	comma	002C	
+35	fullstop	002E	
+34	query	003F	
+225	altbegin	007B	
+38	metaalt	007C	
+226	altend	007D	
+50	fist	E000	D
+51	flathand	E001	E
+52	finger2	E002	F
+53	finger23	E003	G
+54	finger23spread	E004	H
+55	finger2345	E005	I
+58	pinch12	E006	M
+59	pinchall	E007	N
+60	pinch12open	E008	O
+61	cee12	E009	P
+62	ceeall	E00A	Q
+63	ceeopen	E00B	R
+56	thumboutmod	E00C	J
+57	thumbacrossmod	E00D	K
+64	thumbopenmod	E00E	L
+65	fingerstraightmod	E010	A
+66	fingerbendmod	E011	B
+67	fingerhookmod	E012	C
+69	doublebent	E013	6
+70	doublehooked	E014	7
+72	extfingeru	E020	
+73	extfingerur	E021	
+74	extfingerr	E022	
+75	extfingerdr	E023	
+76	extfingerd	E024	
+77	extfingerdl	E025	
+78	extfingerl	E026	
+79	extfingerul	E027	
+80	extfingerol	E028	
+81	extfingero	E029	
+82	extfingeror	E02A	
+83	extfingeril	E02B	
+84	extfingeri	E02C	
+85	extfingerir	E02D	
+86	extfingerui	E02E	
+87	extfingerdi	E02F	
+88	extfingerdo	E030	
+89	extfingeruo	E031	
+96	palmu	E038	
+97	palmur	E039	
+98	palmr	E03A	
+99	palmdr	E03B	
+100	palmd	E03C	
+101	palmdl	E03D	
+102	palml	E03E	
+103	palmul	E03F	
+113	head	E040	
+114	headtop	E041	
+115	forehead	E042	
+116	eyebrows	E043	
+117	eyes	E044	
+118	nose	E045	
+94	nostrils	E046	
+119	ear	E047	
+93	earlobe	E048	
+120	cheek	E049	
+121	lips	E04A	
+109	tongue	E04B	
+110	teeth	E04C	
+122	chin	E04D	
+123	underchin	E04E	
+124	neck	E04F	
+95	shouldertop	E050	
+125	shoulders	E051	
+126	chest	E052	
+111	stomach	E053	
+128	belowstomach	E054	
+129	lrbeside	E058	
+130	lrat	E059	
+158	coreftag	E05A	
+159	corefref	E05B	
+112	neutralspace	E05F	
+131	upperarm	E060	
+132	elbow	E061	
+133	elbowinside	E062	
+134	lowerarm	E063	
+135	wristback	E064	
+136	wristpulse	E065	
+137	thumbball	E066	
+138	palm	E067	
+139	handback	E068	
+145	thumbside	E069	
+146	pinkyside	E06A	
+140	thumb	E070	1
+141	indexfinger	E071	2
+142	middlefinger	E072	3
+143	ringfinger	E073	4
+144	pinky	E074	5
+148	fingertip	E075	T
+149	fingernail	E076	U
+150	fingerpad	E077	V
+151	fingermidjoint	E078	W
+152	fingerbase	E079	X
+153	fingerside	E07A	Y
+154	wristtopulse	E07C	
+155	wristtoback	E07D	
+156	wristtothumb	E07E	
+157	wristtopinky	E07F	
+161	moveu	E080	
+162	moveur	E081	
+163	mover	E082	
+164	movedr	E083	
+165	moved	E084	
+166	movedl	E085	
+167	movel	E086	
+168	moveul	E087	
+169	moveol	E088	
+170	moveo	E089	
+171	moveor	E08A	
+172	moveil	E08B	
+173	movei	E08C	
+174	moveir	E08D	
+175	moveui	E08E	
+176	movedi	E08F	
+177	movedo	E090	
+178	moveuo	E091	
+192	circleo	E092	
+193	circlei	E093	
+194	circled	E094	
+195	circleu	E095	
+196	circlel	E096	
+197	circler	E097	
+240	circleul	E098	
+241	circledr	E099	
+242	circleur	E09A	
+243	circledl	E09B	
+244	circleol	E09C	
+245	circleir	E09D	
+246	circleor	E09E	
+247	circleil	E09F	
+249	circleui	E0A0	
+248	circledo	E0A1	
+250	circleuo	E0A2	
+251	circledi	E0A3	
+189	fingerplay	E0A4	
+227	nodding	E0A5	
+228	swinging	E0A6	
+229	twisting	E0A7	
+230	stircw	E0A8	
+231	stirccw	E0A9	
+104	replace	E0AA	
+179	movecross	E0AD	
+180	moveX	E0AE	
+160	nomotion	E0AF	
+39	clocku	E0B0	
+40	clockul	E0B1	
+41	clockl	E0B2	
+42	clockdl	E0B3	
+43	clockd	E0B4	
+44	clockdr	E0B5	
+45	clockr	E0B6	
+46	clockur	E0B7	
+47	clockfull	E0B8	
+183	arcl	E0B9	
+184	arcu	E0BA	
+185	arcr	E0BB	
+186	arcd	E0BC	
+187	wavy	E0BD	
+188	zigzag	E0BE	
+220	ellipseh	E0C0	
+221	ellipseur	E0C1	
+222	ellipsev	E0C2	
+223	ellipseul	E0C3	
+198	increasing	E0C4	
+199	decreasing	E0C5	
+181	smallmod	E0C6	
+182	largemod	E0C7	
+204	fast	E0C8	
+205	slow	E0C9	
+206	tense	E0CA	
+207	rest	E0CB	
+208	halt	E0CC	
+200	close	E0D0	
+201	touch	E0D1	
+202	interlock	E0D2	
+203	cross	E0D3	
+105	armextended	E0D4	
+106	behind	E0D5	
+217	brushing	E0D6	
+209	repeatfromstart	E0D8	
+210	repeatfromstartseveral	E0D9	
+211	repeatcontinue	E0DA	
+212	repeatcontinueseveral	E0DB	
+216	repeatreverse	E0DC	
+215	alternatingmotion	E0DD	
+213	seqbegin	E0E0	
+214	seqend	E0E1	
+190	parbegin	E0E2	
+191	parend	E0E3	
+236	fusionbegin	E0E4	
+237	fusionend	E0E5	
+147	between	E0E6	S
+37	plus	E0E7	
+48	symmpar	E0E8	
+49	symmlr	E0E9	
+68	nondominant	E0EA	
+218	nonipsi	E0EB	
+107	etc	E0EC	
+108	orirelative	E0ED	
+224	mime	E0F0	
+20	version40	E0F1	
