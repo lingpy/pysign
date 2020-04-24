@@ -5,7 +5,7 @@
 """
 
 # Example (1) most simple full sign transcription: 
-# one dominant hand, one orientation, one location, one movement
+# one dominant hand, one orientation (must have two symbols), one location, one movement
 
 {
 "   ": # segmented into types
