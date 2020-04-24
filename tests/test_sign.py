@@ -14,9 +14,12 @@
     "symmetry": "",
     "dominant_hand": "", # hamfinger2
     "nondominant_hand": "",
-    "orientation": "", # hamextfingeru,hampalmu
-    "location": "", # hamchest
-    "movement": "" # hammoveo
+    "dominant_orientation": "", # hamextfingeru,hampalmu
+    "nondominant_orientation": "",
+    "dominant_location": "", # hamchest
+    "nondominant_location: "",
+    "dominant_movement": "", # hammoveo
+    "nondominant_movement": ""
     }
 }
 
@@ -30,9 +33,12 @@
      "symmetry": "", #hamsymmpar
      "dominant_hand": "", # hamfinger2
      "nondominant_hand": "",
-     "orientation": "", # hamextfingeru,hampalmu
-     "location": "", # hamchest
-     "movement": "" # hammoveo
+     "dominant_orientation": "", # hamextfingeru,hampalmu
+     "nondominant_orientation": "",
+     "dominant_location": "", # hamchest
+     "nondominant_location": "",
+     "dominant_movement": "", # hammoveo
+     "nondominant_movement": ""
      }
 }
 
