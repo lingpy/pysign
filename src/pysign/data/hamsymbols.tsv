@@ -1,0 +1,209 @@
+	NAME	UNICODE	SYMBOL	DOMAIN	TYPE	SUBDOMAIN	NOTE
+0	hamspace	20	 				unclear how it is used
+1	hamexclaim	21	!	sentence	base	facial-expr	
+2	hamcomma	002C	,	sentence	base	sequential	
+3	hamfullstop	002E	.	sentence	base	facial-neutral	
+4	hamquery	003F	?	sentence	base	facial-expr	
+5	hamaltbegin	007B	{	logical	start	variation	
+6	hammetaalt	007C	|	logical	or	variation	
+7	hamaltend	007D	}	logical	stop	variation	
+8	hamfist	E000		handshape	base	fingers	
+9	hamflathand	E001		handshape	base	fingers	
+10	hamfinger2	E002		handshape	base	fingers	
+11	hamfinger23	E003		handshape	base	fingers	
+12	hamfinger23spread	E004		handshape	base	fingers	
+13	hamfinger2345	E005		handshape	base	fingers	
+14	hampinch12	E006		handshape	base	fingers	
+15	hampinchall	E007		handshape	base	fingers	
+16	hampinch12open	E008		handshape	base	fingers	
+17	hamcee12	E009		handshape	base	fingers	
+18	hamceeall	E00A		handshape	base	fingers	
+19	hamceeopen	E00B		handshape	base	fingers	
+20	hamthumboutmod	E00C		handshape	diacritic	thumb	
+21	hamthumbacrossmod	E00D		handshape	diacritic	thumb	
+22	hamthumbopenmod	E00E		handshape	diacritic	thumb	
+23	hamfingerstraightmod	E010		handshape	diacritic	flexion	
+24	hamfingerbendmod	E011		handshape	diacritic	flexion	
+25	hamfingerhookmod	E012		handshape	diacritic	flexion	
+26	hamdoublebent	E013		handshape|location	diacritic	flexion	ambiguous
+27	hamdoublehooked	E014		handshape|location	diacritic	flexion	ambiguous
+28	hamextfingeru	E020		orientation	base	direction-finger	
+29	hamextfingerur	E021		orientation	base	direction-finger	
+30	hamextfingerr	E022		orientation	base	direction-finger	
+31	hamextfingerdr	E023		orientation	base	direction-finger	
+32	hamextfingerd	E024		orientation	base	direction-finger	
+33	hamextfingerdl	E025		orientation	base	direction-finger	
+34	hamextfingerl	E026		orientation	base	direction-finger	
+35	hamextfingerul	E027		orientation	base	direction-finger	
+36	hamextfingerol	E028		orientation	base	direction-finger	
+37	hamextfingero	E029		orientation	base	direction-finger	
+38	hamextfingeror	E02A		orientation	base	direction-finger	
+39	hamextfingeril	E02B		orientation	base	direction-finger	
+40	hamextfingeri	E02C		orientation	base	direction-finger	
+41	hamextfingerir	E02D		orientation	base	direction-finger	
+42	hamextfingerui	E02E		orientation	base	direction-finger	
+43	hamextfingerdi	E02F		orientation	base	direction-finger	
+44	hamextfingerdo	E030		orientation	base	direction-finger	
+45	hamextfingeruo	E031		orientation	base	direction-finger	
+46	hampalmu	E038		orientation	base	direction-palm	
+47	hampalmur	E039		orientation	base	direction-palm	
+48	hampalmr	E03A		orientation	base	direction-palm	
+49	hampalmdr	E03B		orientation	base	direction-palm	
+50	hampalmd	E03C		orientation	base	direction-palm	
+51	hampalmdl	E03D		orientation	base	direction-palm	
+52	hampalml	E03E		orientation	base	direction-palm	
+53	hampalmul	E03F		orientation	base	direction-palm	
+54	hamhead	E040		location	base	head	
+55	hamheadtop	E041		location	base	head	
+56	hamforehead	E042		location	base	head	
+57	hameyebrows	E043		location	base	face	
+58	hameyes	E044		location	base	face	
+59	hamnose	E045		location	base	face	
+60	hamnostrils	E046		location	base	face	
+61	hamear	E047		location	base	face	
+62	hamearlobe	E048		location	base	face	
+63	hamcheek	E049		location	base	face	
+64	hamlips	E04A		location	base	face	
+65	hamtongue	E04B		location	base	face	
+66	hamteeth	E04C		location	base	face	
+67	hamchin	E04D		location	base	face	
+68	hamunderchin	E04E		location	base	head	
+69	hamneck	E04F		location	base	head	
+70	hamshouldertop	E050		location	base	body	
+71	hamshoulders	E051		location	base	body	
+72	hamchest	E052		location	base	body	
+73	hamstomach	E053		location	base	body	
+74	hambelowstomach	E054		location	base	body	
+75	hamlrbeside	E058		handshape|location	diacritic	relative-space	ambiguous
+76	hamlrat	E059		location	diacritic	relative-space	
+77	hamcoreftag	E05A		location	flag	index	used in discourse to simplify notation
+78	hamcorefref	E05B		location	flag	index	used in discourse to simplify notation
+79	hamneutralspace	E05F		location	base	space	
+80	hamupperarm	E060		location	base	arm	
+81	hamelbow	E061		location	base	arm	deprecated
+82	hamelbowinside	E062		location	base	arm	
+83	hamlowerarm	E063		location	base	arm	
+84	hamwristback	E064		location	base	arm	
+85	hamwristpulse	E065		location	base	arm	deprecated
+86	hamthumbball	E066		location	base	hand	
+87	hampalm	E067		location	base	hand	
+88	hamhandback	E068		location	base	hand	
+89	hamthumbside	E069		location	base	hand	
+90	hampinkyside	E06A		location	base	hand	
+91	hamthumb	E070		handshape|location		finger	ambiguous
+92	hamindexfinger	E071		handshape|location		finger	ambiguous
+93	hammiddlefinger	E072		handshape|location		finger	ambiguous
+94	hamringfinger	E073		handshape|location		finger	ambiguous
+95	hampinky	E074		handshape|location		finger	ambiguous
+96	hamfingertip	E075		handshape|location		finger-part	ambiguous
+97	hamfingernail	E076		handshape|location		finger-part	ambiguous
+98	hamfingerpad	E077		handshape|location		finger-part	deprecated; ambiguous
+99	hamfingermidjoint	E078		handshape|location		finger-part	ambiguous
+100	hamfingerbase	E079		handshape|location		finger-part	ambiguous
+101	hamfingerside	E07A		handshape|location		finger-part	ambiguous
+102	hamwristtopulse	E07C		location	base	arm	deprecated; can't find the symbols
+103	hamwristtoback	E07D		location	base	arm	deprecated; can't find the symbols
+104	hamwristtothumb	E07E		location	base	arm	deprecated; can't find the symbols
+105	hamwristtopinky	E07F		location	base	arm	deprecated; can't find the symbols
+106	hammoveu	E080		movement	base	path	
+107	hammoveur	E081		movement	base	path	
+108	hammover	E082		movement	base	path	
+109	hammovedr	E083		movement	base	path	
+110	hammoved	E084		movement	base	path	
+111	hammovedl	E085		movement	base	path	
+112	hammovel	E086		movement	base	path	
+113	hammoveul	E087		movement	base	path	
+114	hammoveol	E088		movement	base	path	
+115	hammoveo	E089		movement	base	path	
+116	hammoveor	E08A		movement	base	path	
+117	hammoveil	E08B		movement	base	path	
+118	hammovei	E08C		movement	base	path	
+119	hammoveir	E08D		movement	base	path	
+120	hammoveui	E08E		movement	base	path	
+121	hammovedi	E08F		movement	base	path	
+122	hammovedo	E090		movement	base	path	
+123	hammoveuo	E091		movement	base	path	
+124	hamcircleo	E092		movement	base	circle	
+125	hamcirclei	E093		movement	base	circle	
+126	hamcircled	E094		movement	base	circle	
+127	hamcircleu	E095		movement	base	circle	
+128	hamcirclel	E096		movement	base	circle	
+129	hamcircler	E097		movement	base	circle	
+130	hamcircleul	E098		movement	base	circle	
+131	hamcircledr	E099		movement	base	circle	
+132	hamcircleur	E09A		movement	base	circle	
+133	hamcircledl	E09B		movement	base	circle	
+134	hamcircleol	E09C		movement	base	circle	
+135	hamcircleir	E09D		movement	base	circle	
+136	hamcircleor	E09E		movement	base	circle	
+137	hamcircleil	E09F		movement	base	circle	
+138	hamcircleui	E0A0		movement	base	circle	
+139	hamcircledo	E0A1		movement	base	circle	
+140	hamcircleuo	E0A2		movement	base	circle	
+141	hamcircledi	E0A3		movement	base	circle	
+142	hamfingerplay	E0A4		movement	base	internal	
+143	hamnodding	E0A5		movement	base	wrist	
+144	hamswinging	E0A6		movement	base	wrist	
+145	hamtwisting	E0A7		movement	base	wrist	
+146	hamstircw	E0A8		movement	base	wrist	
+147	hamstirccw	E0A9		movement	base	wrist	
+148	hamreplace	E0AA		movement	base	change	
+149	hammovecross	E0AD		movement	base	path	deprecated; can't find the symbols
+150	hammoveX	E0AE		movement	base	path	deprecated; can't find the symbols
+151	hamnomotion	E0AF		movement	base	no-move	
+152	hamclocku	E0B0		movement	diacritic	circle	
+153	hamclockul	E0B1		movement	diacritic	circle	
+154	hamclockl	E0B2		movement	diacritic	circle	
+155	hamclockdl	E0B3		movement	diacritic	circle	
+156	hamclockd	E0B4		movement	diacritic	circle	
+157	hamclockdr	E0B5		movement	diacritic	circle	
+158	hamclockr	E0B6		movement	diacritic	circle	
+159	hamclockur	E0B7		movement	diacritic	circle	
+160	hamclockfull	E0B8		movement	diacritic	circle	
+161	hamarcl	E0B9		movement	diacritic	path	
+162	hamarcu	E0BA		movement	diacritic	path	
+163	hamarcr	E0BB		movement	diacritic	path	
+164	hamarcd	E0BC		movement	diacritic	path	
+165	hamwavy	E0BD		movement	diacritic	path	can also combine with subdomain : circle
+166	hamzigzag	E0BE		movement	diacritic	path	can also combine with subdomain : circle
+167	hamellipseh	E0C0		movement	diacritic	path	can also combine with subdomain : circle
+168	hamellipseur	E0C1		movement	diacritic	path	can also combine with subdomain : circle
+169	hamellipsev	E0C2		movement	diacritic	path	can also combine with subdomain : circle
+170	hamellipseul	E0C3		movement	diacritic	path	can also combine with subdomain : circle
+171	hamincreasing	E0C4		movement	diacritic	repetition	
+172	hamdecreasing	E0C5		movement	diacritic	repetition	
+173	hamsmallmod	E0C6		movement	diacritic	size	
+174	hamlargemod	E0C7		movement|symmetry	diacritic	size	ambiguous
+175	hamfast	E0C8		movement	diacritic	modality	
+176	hamslow	E0C9		movement	diacritic	modality	
+177	hamtense	E0CA		movement	diacritic	modality	
+178	hamrest	E0CB		movement	diacritic	modality	
+179	hamhalt	E0CC		movement	diacritic	modality	
+180	hamclose	E0D0		location	base	contact	perhaps make this separate type, contact
+181	hamtouch	E0D1		location	base	contact	perhaps make this separate type, contact
+182	haminterlock	E0D2		location	base	contact	perhaps make this separate type, contact
+183	hamcross	E0D3		location	base	contact	perhaps make this separate type, contact
+184	hamarmextended	E0D4		location	diacritic	relative-space	
+185	hambehind	E0D5		location	diacritic	relative-space	
+186	hambrushing	E0D6		location	base	contact	perhaps make this separate type, contact
+187	hamrepeatfromstart	E0D8		movement	diacritic	repetition	
+188	hamrepeatfromstartseveral	E0D9		movement	diacritic	repetition	
+189	hamrepeatcontinue	E0DA		movement	diacritic	repetition	
+190	hamrepeatcontinueseveral	E0DB		movement	diacritic	repetition	
+191	hamrepeatreverse	E0DC		movement	diacritic	repetition	
+192	hamalternatingmotion	E0DD		symmetry|movement	diacritic	alternation	ambiguous: after symmetry or after movement
+193	hamseqbegin	E0E0		group	start	group	just used for grouping
+194	hamseqend	E0E1		group	stop	group	just used for grouping
+195	hamparbegin	E0E2		group	start	dom-nondom|simultaneous	ambiguous: groups simultaneous movement symbols or marks dominant-nondominant values
+196	hamparend	E0E3		group	stop	dom-nondom|simultaneous	ambiguous: groups simultaneous movement symbols or marks dominant-nondominant values
+197	hamfusionbegin	E0E4		group	start	fuse	applies to movements
+198	hamfusionend	E0E5		group	stop	fuse	applies to movements
+199	hambetween	E0E6		handshape|any	diacritic|flag	thumb|intermediate	ambiguous: as flag means intermediate value between two handshapes; as diacritic means thumb position between fingers
+200	hamplus	E0E7		group	flag	dom-nondom	
+201	hamsymmpar	E0E8		symmetry	base	plane	
+202	hamsymmlr	E0E9		symmetry	base	plane	
+203	hamnondominant	E0EA		symmetry	flag	reverse-dominance	
+204	hamnonipsi	E0EB		symmetry	flag	reverse-dominance	
+205	hametc	E0EC		any	diacritic	underspecification	can be applied in any domain or subdomain
+206	hamorirelative	E0ED		orientation	diacritic	relative	
+207	hammime	E0F0		sentence	facial	place-holder	
