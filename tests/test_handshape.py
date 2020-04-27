@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
-
+"""
+Regex for matching handshape symbols.
+"""
 import re
 
 regex = r"[][]*"
