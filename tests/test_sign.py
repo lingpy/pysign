@@ -1,7 +1,6 @@
-#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-
+Transcriptions and targets for the parser
 """
 
 # Example (1) most simple full sign transcription: 
@@ -14,6 +13,7 @@
     "symmetry": "",
     "dominant_hand": "", # hamfinger2
     "nondominant_hand": "",
+    "handshape_change": "",
     "dominant_orientation": "", # hamextfingeru,hampalmu
     "nondominant_orientation": "",
     "dominant_location": "", # hamchest
@@ -33,6 +33,7 @@
      "symmetry": "", #hamsymmpar
      "dominant_hand": "", # hamfinger2
      "nondominant_hand": "",
+     "handshape_change": "",
      "dominant_orientation": "", # hamextfingeru,hampalmu
      "nondominant_orientation": "",
      "dominant_location": "", # hamchest
@@ -52,6 +53,7 @@
       "symmetry": "",
       "dominant_hand": "", # hamfinger2
       "nondominant_hand": "", # hamflathand
+      "handshape_change": "",
       "dominant_orientation": "", # hamextfingeru,hampalml
       "nondominant_orientation": "", # hamextfingero,hampalmd
       "dominant_location": "", # hamshoulders,hamlrat (sequence matters!)
@@ -60,3 +62,22 @@
       "nondominant_movement": "" # hamnomotion
       }
  }
+
+# Example (4) one-handed sign with handshape change: 
+# one dominant hand and handshape change; no orientation provided,
+# two locations, and movement as handshape change
+
+{
+ "   ":
+    {"symmetry": "",
+      "dominant_hand": "",
+      "nondominant_hand": "",
+      "handshape_change": "",
+      "dominant_orientation": "",
+      "nondominant_orientation": "",
+      "dominant_location": ["", ""] # beginning and ending locations
+      "nondominant_location": "",
+      "dominant_movement": "",
+      "nondominant_movement": ""
+    }
+}
