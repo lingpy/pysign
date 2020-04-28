@@ -3,6 +3,22 @@
 Regex for matching handshape symbols.
 """
 import re
+from pysign.parse import translate
+
+def find_handshape(string, handshape_start="", handshape_base=""):
+    """
+    Alternative version without re.
+    """
+    handshapes = '' 
+    rest = ''
+    for char in string:
+        if char in handshape_start:
+            handshapes += char
+        elif char in handshape_base:
+            handshapes += char
+        else:
+            rest += char
+    return {'handshape': handshapes, "rest": 'rest'}
 
 # all handshapes in string
 regex = r"[][]*"
@@ -26,3 +42,12 @@ for matchNum, match in enumerate(matches_1, start=1):
     print ("Match {matchNum} was found at {start}-{end}: {match}".format(
         matchNum = matchNum, start = match.start(), end = match.end(), 
         match = match.group()))
+
+for example in [test_example_1, test_example_2, test_example_3,
+        test_example_4]:
+    res = find_handshape(example)
+    print('Found handshape at {0} / {1}'.format(
+        res['handshape'],
+        translate(res['handshape'])))
+
+
