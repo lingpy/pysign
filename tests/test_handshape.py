@@ -1,24 +1,31 @@
 # -*- coding: utf-8 -*-
 """
-Regex for matching handshape symbols.
+Two alternatives for matching handshape symbols.
 """
 import re
 from pysign.parse import translate
 
-def find_handshape(string, handshape_start="", handshape_base=""):
+def find_handshape(string, handshape_base="", handshape_diacritic=""):
     """
     Alternative version without re.
     """
-    handshapes = '' 
+    in_handshape = False
+    handshapes = []
     rest = ''
     for char in string:
-        if char in handshape_start:
-            handshapes += char
-        elif char in handshape_base:
-            handshapes += char
+        if char in handshape_base:
+            if in_handshape:
+                handshapes[-1] += char # append to existing handshape
+            else:
+                in_handshape = True # switch on environment of handshape
+                handshapes += [char] # append a new segment to the list
+        elif char in handshape_diacritic: 
+            if in_handshape:
+                handshapes[-1] += char
         else:
+            in_handshape = False
             rest += char
-    return {'handshape': handshapes, "rest": 'rest'}
+    return {'handshape': handshapes, "rest": rest}
 
 # all handshapes in string
 regex = r"[][]*"
