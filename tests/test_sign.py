@@ -48,7 +48,7 @@ Transcriptions and targets for the parser
 # and movements for each hand
 
 {
- "                 ":
+ "   ":
      {
       "symmetry": "",
       "dominant_hand": "", # hamfinger2
