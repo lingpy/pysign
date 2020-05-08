@@ -2,11 +2,15 @@
 Module for parsing segmented HamNoSys transcriptions.
 """
 from pysign.data import HAMNOSYS
+import attr
+from tabulate import tabulate
+
 
 def ascify(text, sep='.'):
     return '.'.join(
             HAMNOSYS.get(char, {"Name": '<'+char+'>'})["Name"] for char in
             text).replace('.asciispace.', ' ')
+
 
 def parse_hamnosys(text, 
         symmetry_base="", 
@@ -296,122 +300,172 @@ def parse_hamnosys(text,
     else:
         pass
 
-    if not ascify_text:
-        data = {
-                'symmetry': symmetry,
-                'handshape': {
-                    'dominant': {
-                        'shape': dominant_hand,
-                        'change': handshape_change
-                        },
-                    'nondominant': {
-                        'shape': nondominant_hand,
-                        'change': '' # is this never annotated?
-                        },
-                    },
-                'orientation': { 
-                    'dominant': {
-                        'orientation': dominant_orientation,
-                        'change': orientation_change
-                        },
-                    'nondominant': {
-                        'orientation': nondominant_orientation,
-                        'change': '' # is this never annotated?
-                        },
-                    },
-                'contact': contact,
-                'location': { 
-                    'dominant': {
-                        'location': dominant_location,
-                        'change': location_change
-                        },
-                    'nondominant': {
-                        'location': nondominant_location
-                        },
-                    },
-                'movement': { 
-                    'dominant': {
-                        'movement': dominant_movement,
-                        'change': movement_change
-                        },
-                    'nondominant': {
-                        'movement': nondominant_movement
-                        },
-                    },                
-#                'errors': unparsable,
-                'handshape metasymbols': handshapes_meta,
-                'orientation metasymbols': orientation_meta,
-                'location metasymbols': location_meta,
-                'movement metasymbols': movement_meta,
+    data = {
+            'symmetry': symmetry,
+            'dominant': {
+                'shape': [dominant_hand, handshape_change],
+                'orientation': [dominant_orientation, orientation_change],
+                'location': [dominant_location, location_change],
+                'movement': [dominant_movement, movement_change],
+                'is_dominant': True
+                },
+            'nondominant': {
+                'shape': [nondominant_hand, ''],
+                'orientation': [nondominant_orientation, ''],
+                'location': [nondominant_location, ''],
+                'movement': [nondominant_movement, ''],
+                'is_dominant': False
+                },
+            'meta': {
+                'handshape': handshapes_meta,
+                'orientation': orientation_meta,
+                'location': location_meta,
+                'movement': movement_meta,
                 'rest': rest
-               }
-    else:
-        data = {
-                'symmetry': ascify(symmetry),
-                'handshape': {
-                    'dominant': {
-                        'shape': ascify(dominant_hand),
-                        'change': ascify(handshape_change)
-                        },
-                    'nondominant': {
-                        'shape': ascify(nondominant_hand),
-                        'change': '' # is this never annotated?
-                        },
-                    },
-                'orientation': {
-                    'dominant': {
-                        'orientation': ascify(dominant_orientation),
-                        'change': ascify(orientation_change)
-                        },
-                    'nondominant': {
-                        'orientation': ascify(nondominant_orientation),
-                        'change': '' # is this never annotated?
-                        },
-                    },
-                'contact': ascify(contact),
-                'location': { 
-                    'dominant': {
-                        'location': ascify(dominant_location),
-                        'change': ascify(location_change)
-                        },
-                    'nondominant': {
-                        'location': ascify(nondominant_location)
-                        },
-                    },                
-                'movement': { 
-                    'dominant': {
-                        'movement': ascify(dominant_movement),
-                        'change': ascify(movement_change)
-                        },
-                    'nondominant': {
-                        'movement': ascify(nondominant_movement)
-                        },
-                    },                
-#                'errors': ascify(unparsable),
-                'handshape metasymbols': ascify(handshapes_meta),
-                'orientation metasymbols': ascify(orientation_meta),
-                'location metasymbols': ascify(location_meta),
-                'movement metasymbols': ascify(movement_meta),
-                'rest': ascify(rest)
                 }
+            }
     return data
 
-             
+
+@attr.s
+class Hand(object):
+    shape = attr.ib(default='')
+    orientation = attr.ib(default='')
+    location = attr.ib(default='')
+    movement = attr.ib(default='')
+    is_dominant = attr.ib(default='')
 
 
-class Word(object):
-    
-    def __init__(self, text, delimiter=' + '):
-        self.signs = [Sign(sign) for sign in text.split(delimiter)]
-
-
+@attr.s
 class Sign(object):
+    text = attr.ib(default='')
+    dominant = attr.ib(default='')
+    nondominant = attr.ib(default='')
+    meta = attr.ib(default={'handshape': '', 'orientation': '',
+        'location': '', 'movement': '', 'rest': ''})
+    
+    @classmethod
+    def from_text(cls, text):
+        data = parse_hamnosys(text)
+        dominant = Hand(**data['dominant'])
+        nondominant = Hand(**data['nondominant'])
+        meta = data['meta']
+        return cls(
+                text=text, 
+                dominant=dominant, 
+                nondominant=nondominant, 
+                meta=meta
+                )
 
-    def __init__(self, text, delimiter=None):
-        
-        segments = text.split(delimiter)
-        data = {}
-        for i, segment in enumerate(segments):
-            pass
+    def pprint(self):
+        table = [['Category', 'Dominant', 'Change', 'Nondominant']]
+        for category in ['shape', 'orientation', 'location', 'movement']:
+            table += [[category, getattr(self.dominant, category)[0],
+                getattr(self.dominant, category)[1],
+                getattr(self.nondominant, category)[0]]]
+        print(self.text)
+        print(tabulate(table, headers='firstrow', tablefmt='pipe'))
 
+
+
+
+
+# old data, to be deleted
+#        data = {
+#                'symmetry': symmetry,
+#                'handshape': {
+#                    'dominant': {
+#                        'shape': dominant_hand,
+#                        'change': handshape_change
+#                        },
+#                    'nondominant': {
+#                        'shape': nondominant_hand,
+#                        'change': '' # is this never annotated?
+#                        },
+#                    },
+#                'orientation': { 
+#                    'dominant': {
+#                        'orientation': dominant_orientation,
+#                        'change': orientation_change
+#                        },
+#                    'nondominant': {
+#                        'orientation': nondominant_orientation,
+#                        'change': '' # is this never annotated?
+#                        },
+#                    },
+#                'contact': contact,
+#                'location': { 
+#                    'dominant': {
+#                        'location': dominant_location,
+#                        'change': location_change
+#                        },
+#                    'nondominant': {
+#                        'location': nondominant_location
+#                        },
+#                    },
+#                'movement': { 
+#                    'dominant': {
+#                        'movement': dominant_movement,
+#                        'change': movement_change
+#                        },
+#                    'nondominant': {
+#                        'movement': nondominant_movement
+#                        },
+#                    },                
+##                'errors': unparsable,
+#                'handshape metasymbols': handshapes_meta,
+#                'orientation metasymbols': orientation_meta,
+#                'location metasymbols': location_meta,
+#                'movement metasymbols': movement_meta,
+#                'rest': rest
+#               }
+#    else:
+#        data = {
+#                'symmetry': ascify(symmetry),
+#                'handshape': {
+#                    'dominant': {
+#                        'shape': ascify(dominant_hand),
+#                        'change': ascify(handshape_change)
+#                        },
+#                    'nondominant': {
+#                        'shape': ascify(nondominant_hand),
+#                        'change': '' # is this never annotated?
+#                        },
+#                    },
+#                'orientation': {
+#                    'dominant': {
+#                        'orientation': ascify(dominant_orientation),
+#                        'change': ascify(orientation_change)
+#                        },
+#                    'nondominant': {
+#                        'orientation': ascify(nondominant_orientation),
+#                        'change': '' # is this never annotated?
+#                        },
+#                    },
+#                'contact': ascify(contact),
+#                'location': { 
+#                    'dominant': {
+#                        'location': ascify(dominant_location),
+#                        'change': ascify(location_change)
+#                        },
+#                    'nondominant': {
+#                        'location': ascify(nondominant_location)
+#                        },
+#                    },                
+#                'movement': { 
+#                    'dominant': {
+#                        'movement': ascify(dominant_movement),
+#                        'change': ascify(movement_change)
+#                        },
+#                    'nondominant': {
+#                        'movement': ascify(nondominant_movement)
+#                        },
+#                    },                
+##                'errors': ascify(unparsable),
+#                'handshape_metasymbols': ascify(handshapes_meta),
+#                'orientation_metasymbols': ascify(orientation_meta),
+#                'location_metasymbols': ascify(location_meta),
+#                'movement_metasymbols': ascify(movement_meta),
+#                'rest': ascify(rest)
+#                }
 
