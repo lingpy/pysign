@@ -357,12 +357,19 @@ class Sign(object):
                 meta=meta
                 )
 
-    def pprint(self):
+    def pprint(self, as_ascii=True):
+        if not as_ascii:
+            modify = lambda x: x
+        else:
+            modify = ascify
         table = [['Category', 'Dominant', 'Change', 'Nondominant']]
         for category in ['shape', 'orientation', 'location', 'movement']:
-            table += [[category, getattr(self.dominant, category)[0],
-                getattr(self.dominant, category)[1],
-                getattr(self.nondominant, category)[0]]]
+            table += [[
+                category, 
+                modify(getattr(self.dominant, category)[0]),
+                modify(getattr(self.dominant, category)[1]),
+                modify(getattr(self.nondominant, category)[0])
+                    ]]
         print(self.text)
         print(tabulate(table, headers='firstrow', tablefmt='pipe'))
 
