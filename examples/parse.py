@@ -6,9 +6,9 @@ strings = [
         "   ", # two hands, no symmetry
         "   ", # two hands, simultaneous movement with complex bracketing
         "    ", # one hand, beginning and ending locations with contact
-        "  ", # contact and repetition 
+        "   ", # contact and repetition 
         "   ", # one hand, simultaneous movement
-        "   " # detailed initial position, two contacts
+        "    " # detailed initial position, two contacts
           ]
 
 for string in strings:
