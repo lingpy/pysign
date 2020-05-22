@@ -733,7 +733,48 @@ class Hand(object):
     location = attr.ib(default='')
     movement = attr.ib(default='')
     is_dominant = attr.ib(default='')
+    contact = attr.ib(default='')
+    repetition = attr.ib(default='')
 
+    
+    def distance(self, other, weights=None, compare=None):
+        """
+        Compare one hand with another when comparing a sign.
+        
+        Notes
+        -----
+        `weights` is a dictionary with the characteristics one wants to compare
+        and a weight assigned to it. `compare` is a function that yields a
+        score between one and zero when comparing strings. The default is a
+        very simple function that simply yields 1 in case of difference, and 0
+        in case of identity.
+        """
+        weights = weights or {
+                'shape': 5,
+                'orientation': 3,
+                'location': 2,
+                'movement': 1,
+                'contact': 2,
+                'repetition': 2
+                }
+        
+        def identity(string1, string2):
+            if string1 == string2:
+                return 0
+            return 1
+
+        compare = compare or identity
+
+        # get all values, so we divide by them when weighting
+        weight_sum = sum(weights.values())
+        # we make an array with the scores
+        scores = []
+
+        for attribute, weight in sorted(weights.items()):
+            attr1, attr2 = getattr(self, attribute), getattr(other, attribute)
+            scores += [compare(attr1, attr2)*weight]
+        return sum(scores)/weight_sum
+    
 
 @attr.s
 class Sign(object):
