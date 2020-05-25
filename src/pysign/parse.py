@@ -26,30 +26,36 @@ def parse_hamnosys(text,
     handshape_diacritic=""
     orientation_base=""
     orientation_diacritic=""
-    brush=""
-    location_base=""
+    location_base=""
     location_diacritic=""
     contact_base=""
-    movement_base=""
+    brush=""
+    movement_base=""
     movement_diacritic=""
     repetition=""
-    ambiguous_diacritic=""
+    hand_internal_mov=""
+    ambiguous_diacritic=""
+    ambiguous_location = ""
     open_bracket=""
     open_par=""
+    open_fuse=""
     close_par=""
-    dominance_meta=""
     close_bracket=""
+    close_fuse=""
+    dominance_meta=""
 
     # set up environments and variables
     in_symmetry, symmetry = False, []
     in_handshape, handshape, handshapes_meta = False, [], []
-    in_brush = False
-    in_contact, contact, contact_meta = False, [], []
+    in_orientation, orientation, orientation_meta = False, [], []
     in_location, location, location_meta = False, [], []
     in_initial, initial_position = False, []
-    in_orientation, orientation, orientation_meta = False, [], []
+    in_brush = False
+    in_contact, contact, contact_meta = False, [], []
     in_movement, movement, movement_meta = False, [], []
-    in_repetition, repeat = False, []
+    in_fusion, in_simultaneous, in_grouped_movement = False, False, False
+    in_repetition, in_special_repetition, repeat = False, False, []
+    in_hand_internal = False
     rest = ''
     
     for i, char in enumerate(text):
@@ -64,8 +70,12 @@ def parse_hamnosys(text,
             in_location = False
             in_initial = False
             in_movement = False
+            in_fusion = False
+            in_simultaneous = False
             in_repetition = False
-            rest += char # not strictly necessary
+            in_special_repetition = False
+            in_hand_internal = False
+            rest += char # not strictly necessary, but just to parse everything
         
         # characters unique to symmetry
         elif char in symmetry_base:
@@ -75,6 +85,9 @@ def parse_hamnosys(text,
             
         # characters unique to handshape
         elif char in handshape_base:
+            in_handshape = True            
+            handshape += [char]
+
             # turn off other environments
             in_symmetry = False 
             in_orientation = False
@@ -82,35 +95,48 @@ def parse_hamnosys(text,
             in_brush = False
             in_location = False
             in_initial = False
-            in_movement = False 
+            in_movement = False
             in_repetition = False
-            # turn on handshape environment
-            in_handshape = True            
-            handshape += [char]
+            in_special_repetition = False
+            in_hand_internal = False
+            # leave in_fusion on
+            # leave in_simultaneous on
+                    
         elif char in handshape_diacritic:
             handshape[-1] += char
         
         # characters unique to orientation
         elif char in orientation_base:
-            in_symmetry = False
-            in_handshape = False
-            in_contact = False
-            in_brush = False
-            in_location = False
-            in_initial = False
-            in_movement = False
-            in_repetition = False
-            # can have two base characters in sequence
+            # two base characters in sequence
             if in_orientation:
                 orientation[-1] += char
             else:
                 in_orientation = True 
                 orientation += [char]
+
+            # turn off other environments
+            in_symmetry = False
+            in_handshape = False
+            in_contact = False
+            in_brush = False
+            in_location = False
+            in_initial = False
+            in_movement = False
+            in_repetition = False
+            in_special_repetition = False
+            in_hand_internal = False
+            # leave in_fusion on
+            # leave in_simultaneous on
+                        
         elif char == orientation_diacritic: 
             orientation[-1] += char
 
-        # brush and contact symbols can be separated, but should be joined after parsing
+        # join brush and contact symbols
         elif char == brush: 
+            in_brush = True
+            contact += [char]
+
+            # turn off other environments
             in_symmetry = False
             in_handshape = False
             in_orientation = False
@@ -119,58 +145,115 @@ def parse_hamnosys(text,
             in_initial = False
             in_movement = False
             in_repetition = False
-
-            in_brush = True
-            contact += [char]
+            in_special_repetition = False
+            in_hand_internal = False
+            # leave in_fusion on
+            # leave in_simultaneous on
 
         # characters unique to location
         elif char in location_base:
-            in_symmetry = False
-            in_handshape = False
-            in_orientation = False
-            in_contact = False 
-            # leave in_brush environment on, as location symbol intervenes between brush and contact
-            in_movement = False
-            in_repetition = False
-            # can have two location base characters in sequence
+            # two location base characters in sequence
             if in_location:
                 location[-1] += char
-            # more detailed transcription option for initial position
+            # more detailed transcription for initial position
             elif in_initial:
-                initial_position[-1] += char
+                initial_position[-1] += char # follows another symbol
+            elif in_contact:
+                contact[-1] += char
             else:
                 in_location = True 
                 location += [char]
-        elif char in location_diacritic: 
+
+            in_symmetry = False
+            in_handshape = False
+            in_orientation = False
+            in_movement = False
+            in_repetition = False
+            in_special_repetition = False
+            in_hand_internal = False
+            # leave in_contact on 
+            # leave in_brush on
+            # leave in_fusion on
+            # leave in_simultaneous on
+
+        elif char in location_diacritic:
             location[-1] += char
         
         # characters unique to contact
         elif char in contact_base:
+            
+            # add contact to brush symbol if present
+            if in_brush: 
+                in_contact = True
+                contact[-1] += char
+                in_brush = False
+
+            # more detailed transcription for initial position
+            elif text[i-1] == close_bracket:
+                in_initial = True
+                initial_position += [char]
+            elif in_initial: # end of contact, location, contact sequence
+                initial_position[-1] += char
+                in_initial = False
+            else:    
+                in_contact = True
+                contact += [char]
+
             in_symmetry = False
             in_handshape = False
             in_orientation = False
             in_location = False
             in_movement = False
             in_repetition = False
-            
-            # add contact to brush symbol if present
-            if in_brush: 
-                in_brush = False
-                in_contact = True
-                contact[-1] += char
-            # more detailed transcription for initial position
-            elif text[i-1] == close_bracket:
-                in_initial = True
-                initial_position += [char]
-            elif in_initial:
-                initial_position[-1] += char
-            # normal contact type
-            else:    
-                in_contact = True
-                contact += [char]
+            in_special_repetition = False
+            in_hand_internal = False
+            # leave in_fusion on
+            # leave in_simultaneous on
                 
         # characters unique to movement
         elif char in movement_base:
+            
+            if in_movement:
+                if in_simultaneous:
+                    movement[-1] += char
+                elif in_fusion:
+                    movement[-1] += char
+                elif in_special_repetition:
+                    movement[-1] += char
+                else:
+                    movement += [char]
+
+            # for repeated movements
+            elif text[i-1] in repetition:
+                in_movement = True
+                movement[-1] += char
+                
+            # beginning of simple movement
+            else:
+                in_movement = True
+                movement += [char] 
+                
+            in_symmetry = False
+            in_handshape = False
+            in_orientation = False
+            in_brush = False
+            in_contact = False
+            in_location = False
+            in_initial = False
+            in_hand_internal = False
+
+        elif char in movement_diacritic:
+            if in_repetition:
+                repeat[-1] += char
+            else:
+                movement[-1] += char
+                
+        # keep fused movements together and parse at end
+        elif char == open_fuse:
+            movement += [char]
+            in_movement = True
+            in_fusion = True
+            
             in_symmetry = False
             in_handshape = False
             in_orientation = False
@@ -179,37 +262,30 @@ def parse_hamnosys(text,
             in_location = False
             in_initial = False
             in_repetition = False
+            in_special_repetition = False
+            in_simultaneous = False
+            in_hand_internal = False
             
-            # for simultaneous movement
-            if in_movement:
-                if open_bracket in movement[-1]: # this may throw an error 
-                    in_movement = True
-                    movement[-1] += char
-                # special type relating two movements
-                elif text[i-1] in repetition:
-                    in_movement = True
-                    movement[-1] += char
-                # sequential movement
-                else:
-                    movement += [char]
-            # special type relating two movements
-            elif text[i-1] in repetition:
-                in_movement = True
+        elif char == close_fuse:
+            if in_fusion:
                 movement[-1] += char
-            # beginning of simple movement
+
+                in_fusion = False
+                in_handshape = False # these sometimes occur in movement segment
+                in_orientation = False # these sometimes occur in movement segment
+
             else:
-                in_movement = True
-                movement += [char] 
-        elif char in movement_diacritic: 
-            movement[-1] += char
+                movement_meta += char # unparsed
+                in_fusion = False
         
-        # related to movement, but it may be better to parse in a separate category
         elif char in repetition:
             # special type of repetition relating two movements
-            if text[i-1] == open_par:
+            if in_special_repetition:
                 movement[-1] += char
+            # multiple normal repetition
             elif in_repetition:
                 repeat[-1] += char
+            # normal repetition
             else:
                 in_repetition = True
                 repeat += [char]
@@ -226,8 +302,18 @@ def parse_hamnosys(text,
                 contact[-1] += char
             elif in_location:
                 location[-1] += char
-            elif in_movement:
-                movement[-1] += char
+            elif in_movement: 
+                if char in ambiguous_location: # can appear in movement segment
+                    if in_hand_internal:
+                        movement[-1] += char
+                    elif text[i-1] == hand_internal_mov:
+                        in_hand_internal = True
+                        movement[-1] += char
+                    else:
+                        in_location = True
+                        location += [char]
+                else:
+                    movement[-1] += char
             # must be location
             else:
                 in_location = True
@@ -235,16 +321,6 @@ def parse_hamnosys(text,
             
         # check the next character after open bracket
         elif char == open_bracket: 
-            in_symmetry = False
-            in_handshape = False
-            in_orientation = False
-            in_contact = False 
-            in_brush = False
-            in_location = False
-            in_initial = False
-            in_movement = False
-            in_repetition = False
-
             if text[i+1] in ambiguous_diacritic: # I think this must be location                
                 location_meta += char
             elif text[i+1] in handshape_base:
@@ -257,12 +333,14 @@ def parse_hamnosys(text,
                 location_meta += char                
             elif text[i+1] in movement_base:
                 # three options: (a) no dominance symbol, thus simultaneous
-                if dominance_meta not in text[i:]:
+                if dominance_meta not in text[i:]: # this may be a problem for compounds
+                    in_simultaneous = True
                     in_movement = True
                     movement += [char]
                 # (b) simultaneous and dominance symbol
-                elif dominance_meta in text[i:]:
+                elif dominance_meta in text[i:]: # this may be a problem for compounds
                     if text[i-1] == open_bracket:
+                        in_simultaneous = True
                         in_movement = True
                         movement += [char]
                     else:
@@ -270,68 +348,42 @@ def parse_hamnosys(text,
                 # or (c) nondominant, no simultaneity
                 else:
                     movement_meta += char
-            # two open brackets, the second is movement
-            elif text[i+1] == open_bracket: 
+            elif text[i+1] == open_fuse:
+                movement_meta += char
+            elif text[i+1] == open_bracket: # two open brackets, the second is movement
                 movement_meta += char
                 
-            # grouping symbols in 2-handed signs; check 2 characters ahead
-            elif text[i+1] == open_par:
-                in_symmetry = False
-                in_handshape = False
-                in_orientation = False
-                in_contact = False 
-                # leave in_brush environment on
-                in_location = False
-                in_initial = False
-                in_movement = False
-                in_repetition = False
-
-                if text[i+2] in ambiguous_diacritic: # I think this must be location                
-                    location_meta += char
-                elif text[i+2] in handshape_base: 
-                    handshapes_meta += char
-                elif text[i+2] in orientation_base:
-                    orientation_meta += char
-                elif text[i+2] in contact_base:
-                    location_meta += char
-                elif text[i+2] in location_base:
-                    location_meta += char
-                elif text[i+2] in movement_base: 
-                    movement_meta += char
-                else:
-                    rest += char # unparsed characters
+            # grouping symbol; I think this must be movement
+            elif text[i+1] == open_par: 
+                movement_meta += char
             else:
-                rest += char # unparsed characters
+                rest += char # unparsed
 
         # check the next character after open paragraph
         elif char == open_par: 
-            in_symmetry = False
-            in_handshape = False
-            in_orientation = False
-            in_contact = False 
-            # leave in_brush environment on
-            in_location = False
-            in_initial = False
-            in_movement = False
-            in_repetition = False
-            
-            # put these in meta category; I'm not sure what else they are useful for
             if text[i+1] in ambiguous_diacritic: # I think this must be location                
                 location_meta += char
-            elif text[i+1] in handshape_base:
-                handshapes_meta += char                
-            elif text[i+1] in orientation_base:
-                orientation_meta += char
+            elif text[i+1] == handshape_base: # rare
+                handshapes_meta += char
+            elif text[i+1] == orientation_base: # rare
+                orientation_meta += char        
             elif text[i+1] == brush:
                 contact_meta += char
             elif text[i+1] in contact_base:
                 contact_meta += char            
             elif text[i+1] in location_base:
-                location_meta += char                
+                # for locations below the waist; turn on location environment
+                if text[i-1] in location_base:
+                    in_location = True
+                    location_meta += char
+                else:
+                    location_meta += char                
             elif text[i+1] in movement_base:
+                in_grouped_movement = True # to do: for groups of movement symbols
                 movement_meta += char
-            # special movement type
             elif text[i+1] in repetition:
+                in_movement = True
+                in_special_repetition = True
                 movement[-1] += char
             else:
                 rest += char # unparsed characters
@@ -351,15 +403,23 @@ def parse_hamnosys(text,
                 else:
                     movement_meta += char
             elif in_contact:
-                location_meta += char
+                # may occur in movement environment
+                if dominance_meta not in location_meta:
+                    location_meta += char
+                else:
+                    movement_meta += char
             elif in_location:
-                location_meta += char
+                # may occur in movement environment
+                if dominance_meta not in location_meta:
+                    location_meta += char
+                else:
+                    movement_meta += char
             elif in_movement:
                 movement_meta += char
             else:
-                rest += char # unparsed characters
-                
-            # turn off environments; this helps with identifying the detailed initial location type
+                rest += char
+            
+            # turn everything off, so next symbol starts new segment
             in_symmetry = False
             in_handshape = False
             in_orientation = False
@@ -368,157 +428,67 @@ def parse_hamnosys(text,
             in_location = False
             in_initial = False
             in_movement = False
+            in_simultaneous = False
+            in_fusion = False
             in_repetition = False
+            in_special_repetition = False
                 
         # assign close brackets
         elif char == close_bracket:
-            # close simultaneous movement if open bracket in movement
-            if len(movement) > 0:
-                if open_bracket in movement[-1]:
-                    movement[-1] += char
-                elif open_bracket in movement_meta:
-                    if close_bracket not in movement_meta:
-                        movement_meta += char
-                    else:
-                        rest += char # unparsed characters
-                else:
-                    rest += char # unparsed characters
-            
-            # check each segment type for dominance symbol, and assign close bracket if not already present
-            elif dominance_meta in handshapes_meta:
-                if close_bracket not in handshapes_meta:
-                    handshapes_meta += char
-                elif close_bracket not in orientation_meta:
-                    orientation_meta += char
-                elif close_bracket not in location_meta:
-                    location_meta += char
-                elif close_bracket not in movement_meta:
-                    movement_meta += char
-                # multiple open brackets
-                elif movement_meta.count(open_bracket) > 1:
-                    movement_meta += char
-                else:
-                    rest += char # unparsed characters
-            elif dominance_meta in orientation_meta:
-                if close_bracket not in orientation_meta:
-                    orientation_meta += char
-                elif close_bracket not in location_meta:
-                    location_meta += char
-                elif close_bracket not in movement_meta:
-                    movement_meta += char
-                else:
-                    rest += char # unparsed characters
-            elif dominance_meta in location_meta:
-                if close_bracket not in location_meta:
-                    location_meta += char
-                elif close_bracket not in movement_meta:
-                    movement_meta += char
-                else:
-                    rest += char # unparsed characters
-            elif dominance_meta in movement_meta:
-                if close_bracket not in movement_meta:
-                    movement_meta += char
-                # multiple close brackets for movement
-                else:
-                    movement_meta += char
+            # close simlutaneous movement if open bracket in movement
+            if in_simultaneous:
+                movement[-1] += char
+                in_movement = True # leave on to parse dominance_meta in 2-handed signs, with simultaneous
+                
+                in_handshape = False
+                in_orientation = False
+                in_contact = False
+                in_location = False
+                in_simultaneous = False
+                                        
+            elif in_handshape:
+                handshapes_meta += char
+                in_handshape = False
+                
+            elif in_orientation:
+                orientation_meta += char
+                in_orientation = False
+                
+            elif in_location:
+                location_meta += char
+                in_location = False
+                
+            elif in_contact:
+                location_meta += char
+                in_location = False
+
+            elif in_movement:
+                movement_meta += char
+                in_movement= False
+                
             else:
-                rest += char # unparsed characters
+                rest += char # unparsed
                 
         # assign close paragaph
         elif char == close_par:
-            # close special movement type with repetitions
-            if in_movement:
-                movement[-1] += char
-            # close any other open paragraphs, if not already present
-            elif open_par in handshapes_meta:
-                if close_par not in handshapes_meta:
-                    handshapes_meta += char
-                elif open_par in orientation_meta:
-                    if close_par not in orientation_meta:
-                        orientation_meta += char
-                    elif open_par in contact_meta:
-                        if close_par not in contact_meta:
-                            contact_meta += char
-                        # multiple open paragraphs for contact
-                        elif contact_meta.count(open_par) > contact_meta.count(close_par):
-                            contact_meta += char
-                        elif open_par in location_meta:
-                            if close_par not in location_meta:
-                                location_meta += char
-                            elif open_par in movement_meta:
-                                if close_par not in movement_meta:
-                                    movement_meta =+ char
-                                else:
-                                    rest += char # unparsed
-                            else:
-                                rest += char # unparsed
-                        else:
-                            rest += char # unparsed
-                    else:
-                        rest += char # unparsed
+            if in_grouped_movement: # to do
+                movement_meta += char
+            elif in_contact:
+                contact_meta += char
+            elif in_handshape:
+                handshapes_meta += char
+            elif in_orientation:
+                orientation_meta += char
+            elif in_location:
+                location_meta += char
+            elif in_movement:
+                if in_special_repetition:
+                    movement[-1] += char
                 else:
-                    rest += char # unparsed
-            elif open_par in orientation_meta:
-                if close_par not in orientation_meta:
-                    orientation_meta += char
-                elif open_par in contact_meta:
-                    if close_par not in contact_meta:
-                        contact_meta += char
-                    elif contact_meta.count(open_par) > contact_meta.count(close_par):
-                        contact_meta += char
-                    elif open_par in location_meta:
-                        if close_par not in location_meta:
-                            location_meta += char
-                        elif open_par in movement_meta:
-                            if close_par not in movement_meta:
-                                movement_meta =+ char
-                            else:
-                                rest += char # unparsed
-                        else:
-                            rest += char # unparsed
-                    else:
-                        rest += char # unparsed
-                else:
-                    rest += char # unparsed
-            elif open_par in contact_meta:
-                if close_par not in contact_meta:
-                    contact_meta += char
-                elif contact_meta.count(open_par) > contact_meta.count(close_par):
-                    contact_meta += char
-                elif open_par in location_meta:
-                    if close_par not in location_meta:
-                        location_meta += char
-                    elif open_par in movement_meta:
-                        if close_par not in movement_meta:
-                            movement_meta =+ char
-                        else:
-                            rest += char # unparsed
-                    else:
-                        rest += char # unparsed
-                else:
-                    rest += char # unparsed
-            elif open_par in location_meta:
-                if close_par not in location_meta:
-                    location_meta += char
-                elif open_par in movement_meta:
-                    if close_par not in movement_meta:
-                        movement_meta =+ char
-                    else:
-                        rest += char # unparsed
-                else:
-                    rest += char # unparsed
-            elif open_par in movement_meta:
-                if close_par not in movement_meta:
-                    movement_meta =+ char
-                else:
-                    rest += char # unparsed
+                    movement_meta += char
             else:
                 rest += char # unparsed
-        else:
-            rest += char
-
-    # assign dominant, nondominant, initial location, etc
-    
+                
     # handshapes
     if h:
         # determine dominant hand, no symmetry
@@ -529,7 +499,6 @@ def parse_hamnosys(text,
             nondominant_hand = handshape.pop(0)
             # all others
             if len(handshape) > 0:
-                # no upper limit
                 if len (handshape) > 1:
                     handshape_change = handshape
                 else:
@@ -656,31 +625,77 @@ def parse_hamnosys(text,
 
     # movement
     if m:
-    # determine dominant movement
+        # parse contents of simultaneous, fused, and special-repetition movements
+        movement_updated = []
+        for item in movement:
+            if open_bracket in item and close_bracket in item:
+                simul_mov = []
+                stripped_movement = item.strip('')
+                for i, char in enumerate(stripped_movement):
+                    if char in movement_base:
+                        simul_mov += [char]
+                    elif char in movement_diacritic:
+                        simul_mov[-1] += char
+                    elif char in ambiguous_location: # finger internal movement
+                        simul_mov[-1] += char
+                simul_mov.append('simultaneous')
+                movement_updated.append(simul_mov)
+            elif open_fuse in item and close_fuse in item: 
+                fused_mov = []
+                stripped_movement = item.strip('')
+                for i, char in enumerate(stripped_movement):
+                    if char in movement_base:
+                        fused_mov += [char]
+                    elif char in movement_diacritic:
+                        fused_mov[-1] += char
+                    elif char in ambiguous_location: # finger internal movement
+                        fused_mov[-1] += char
+                fused_mov.append('fused')
+                movement_updated.append(fused_mov)
+            elif open_par in item and close_par in item:
+                repeated_mov = []
+                repeating = ''
+                stripped_movement = item.replace('', '').replace('', '')
+                for i, char in enumerate(stripped_movement):
+                    if char in movement_base:
+                        repeated_mov += [char]
+                    elif char in movement_diacritic:
+                        repeated_mov[-1] += char
+                    elif char in ambiguous_location: # finger internal movement
+                        repeated_mov[-1] += char
+                    elif char in repetition:
+                        repeating += char
+                repeated_mov.append(repeating)
+                movement_updated.append(repeated_mov)
+            else:
+                movement_updated.append(item)
+        
+        # determine dominant movement
         if dominance_meta in movement_meta:
-            dominant_movement = movement.pop(0)
-            nondominant_movement = movement.pop(0)
-            if len(movement) > 0:
-                if len(movement) > 1:
-                    movement_change = movement
+            dominant_movement = movement_updated.pop(0)
+            nondominant_movement = movement_updated.pop(0)
+            if len(movement_updated) > 0:
+                if len(movement_updated) > 1:
+                    movement_change = movement_updated
                 else:
-                    movement_change = ''.join(movement)
+                    movement_change = ''.join(movement_updated)
             else:
                 movement_change = ''
         # only one hand
         else:
-            dominant_movement = movement.pop(0)
+            dominant_movement = movement_updated.pop(0)
             nondominant_movement = ''
-            if len(movement) > 0:
-                if len(movement) > 1:
-                    movement_change = movement
+            if len(movement_updated) > 0:
+                if type(movement_updated) == list:
+                    movement_change = movement_updated
                 else:
-                    movement_change = ''.join(movement)
+                    movement_change = ''.join(movement_updated)
             else:
                 movement_change = ''
+                
     else:
         dominant_movement = ''
-        dominant_movement = ''
+        nondominant_movement = ''
         movement_change = ''
     
     # repetition symbols
@@ -708,7 +723,7 @@ def parse_hamnosys(text,
                 'shape': [nondominant_hand, ''],
                 'orientation': [nondominant_orientation, ''],
                 'location': [nondominant_location, ''],
-                'contact': [], 
+                'contact': [],
                 'movement': [nondominant_movement, ''],
                 'is_dominant': False
                 },
@@ -723,8 +738,6 @@ def parse_hamnosys(text,
                 }
             }
     return data
-
-
 
 @attr.s
 class Hand(object):
