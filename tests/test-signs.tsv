@@ -1,0 +1,191 @@
+sign	property	expected
+"   "	symmetry	none
+"   "	initial position	none
+"   "	dominant['shape']	""
+"   "	dominant['orientation']	""
+"   "	dominant['contact']	none
+"   "	dominant['location']	""
+"   "	dominant['movement']	""
+"   "	dominant['repetition']	none
+"   "	nondominant['shape']	none
+"   "	nondominant['orientation']	none
+"   "	nondominant['location']	none
+"   "	nondominant['contact']	none
+"   "	nondominant['movement']	none
+"   "	meta['handshape']	none
+"   "	meta['orientation']	none
+"   "	meta['contact']	none
+"   "	meta['location']	none
+"   "	meta['movement']	none
+"   "	meta['rest']	"   "
+"   "	symmetry	none
+"   "	initial position	none
+"   "	dominant['shape']	""
+"   "	dominant['orientation']	""
+"   "	dominant['contact']	none
+"   "	dominant['location']	""
+"   "	dominant['movement']	""
+"   "	dominant['repetition']	none
+"   "	nondominant['shape']	""
+"   "	nondominant['orientation']	""
+"   "	nondominant['location']	""
+"   "	nondominant['contact']	none
+"   "	nondominant['movement']	""
+"   "	meta['handshape']	"", "", ""
+"   "	meta['orientation']	"", "", ""
+"   "	meta['contact']	none
+"   "	meta['location']	"", "", ""
+"   "	meta['movement']	"", "", ""
+"   "	meta['rest']	"   "
+"   "	symmetry	none
+"   "	initial position	none
+"   "	dominant['shape']	""
+"   "	dominant['orientation']	""
+"   "	dominant['contact']	none
+"   "	dominant['location']	""
+"   "	dominant['movement']	["", "", "simultaneous"]
+"   "	dominant['repetition']	none
+"   "	nondominant['shape']	""
+"   "	nondominant['orientation']	""
+"   "	nondominant['location']	""
+"   "	nondominant['contact']	none
+"   "	nondominant['movement']	""
+"   "	meta['handshape']	"", "", ""
+"   "	meta['orientation']	"", "", ""
+"   "	meta['contact']	none
+"   "	meta['location']	"", "", ""
+"   "	meta['movement']	"", "", ""
+"   "	meta['rest']	"   "
+"    "	symmetry	none
+"    "	initial position	none
+"    "	dominant['shape']	["", ""]
+"    "	dominant['orientation']	""
+"    "	dominant['contact']	["", ""]
+"    "	dominant['location']	["", ""]
+"    "	dominant['movement']	""
+"    "	dominant['repetition']	none
+"    "	nondominant['shape']	none
+"    "	nondominant['orientation']	none
+"    "	nondominant['location']	none
+"    "	nondominant['contact']	none
+"    "	nondominant['movement']	none
+"    "	meta['handshape']	none
+"    "	meta['orientation']	none
+"    "	meta['contact']	["", "", "", "", "", ""]
+"    "	meta['location']	none
+"    "	meta['movement']	none
+"    "	meta['rest']	"    "
+"   "	symmetry	none
+"   "	initial position	none
+"   "	dominant['shape']	""
+"   "	dominant['orientation']	""
+"   "	dominant['contact']	["", ""]
+"   "	dominant['location']	["", ""]
+"   "	dominant['movement']	""
+"   "	dominant['repetition']	""
+"   "	nondominant['shape']	none
+"   "	nondominant['orientation']	none
+"   "	nondominant['location']	none
+"   "	nondominant['contact']	none
+"   "	nondominant['movement']	none
+"   "	meta['handshape']	none
+"   "	meta['orientation']	none
+"   "	meta['contact']	["", "", "", "", "", ""]
+"   "	meta['location']	none
+"   "	meta['movement']	none
+"   "	meta['rest']	"   "
+"   "	symmetry	none
+"   "	initial position	none
+"   "	dominant['shape']	["", ""]
+"   "	dominant['orientation']	["", ""]
+"   "	dominant['contact']	none
+"   "	dominant['location']	""
+"   "	dominant['movement']	["", "", "simultaneous"]
+"   "	dominant['repetition']	none
+"   "	nondominant['shape']	none
+"   "	nondominant['orientation']	none
+"   "	nondominant['location']	none
+"   "	nondominant['contact']	none
+"   "	nondominant['movement']	none
+"   "	meta['handshape']	none
+"   "	meta['orientation']	none
+"   "	meta['contact']	none
+"   "	meta['location']	none
+"   "	meta['movement']	none
+"   "	meta['rest']	"   "
+"    "	symmetry	""
+"    "	initial position	""
+"    "	dominant['shape']	""
+"    "	dominant['orientation']	""
+"    "	dominant['contact']	["", ""]
+"    "	dominant['location']	["", ""]
+"    "	dominant['movement']	["", ""]
+"    "	dominant['repetition']	none
+"    "	nondominant['shape']	none
+"    "	nondominant['orientation']	none
+"    "	nondominant['location']	none
+"    "	nondominant['contact']	none
+"    "	nondominant['movement']	none
+"    "	meta['handshape']	none
+"    "	meta['orientation']	none
+"    "	meta['contact']	["", "", "", ""]
+"    "	meta['location']	["", "", ""]
+"    "	meta['movement']	none
+"    "	meta['rest']	"    "
+"    "	symmetry	""
+"    "	initial position	none
+"    "	dominant['shape']	["", ""]
+"    "	dominant['orientation']	""
+"    "	dominant['contact']	["", ""]
+"    "	dominant['location']	["", ""]
+"    "	dominant['movement']	["", "", "simultaneous"]
+"    "	dominant['repetition']	none
+"    "	nondominant['shape']	none
+"    "	nondominant['orientation']	none
+"    "	nondominant['location']	none
+"    "	nondominant['contact']	none
+"    "	nondominant['movement']	none
+"    "	meta['handshape']	none
+"    "	meta['orientation']	none
+"    "	meta['contact']	["", "", "", ""]
+"    "	meta['location']	"", "", ""
+"    "	meta['movement']	none
+"    "	meta['rest']	"    "
+"    "	symmetry	""
+"    "	initial position	""
+"    "	dominant['shape']	""
+"    "	dominant['orientation']	""
+"    "	dominant['contact']	none
+"    "	dominant['location']	""
+"    "	dominant['movement']	["", "", "simultaneous"]
+"    "	dominant['repetition']	none
+"    "	nondominant['shape']	none
+"    "	nondominant['orientation']	none
+"    "	nondominant['location']	""
+"    "	nondominant['contact']	none
+"    "	nondominant['movement']	none
+"    "	meta['handshape']	none
+"    "	meta['orientation']	none
+"    "	meta['contact']	none
+"    "	meta['location']	"", "", ""
+"    "	meta['movement']	none
+"    "	meta['rest']	"    "
+"   "	symmetry	none
+"   "	initial position	none
+"   "	dominant['shape']	["", ""]
+"   "	dominant['orientation']	""
+"   "	dominant['contact']	""
+"   "	dominant['location']	""
+"   "	dominant['movement']	["", "", ""]
+"   "	dominant['repetition']	none
+"   "	nondominant['shape']	none
+"   "	nondominant['orientation']	none
+"   "	nondominant['location']	none
+"   "	nondominant['contact']	none
+"   "	nondominant['movement']	none
+"   "	meta['handshape']	none
+"   "	meta['orientation']	""
+"   "	meta['contact']	["", ""]
+"   "	meta['location']	none
+"   "	meta['movement']	none
+"   "	meta['rest']	"   "
