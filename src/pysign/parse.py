@@ -95,12 +95,12 @@ def parse_hamnosys(text,
             in_brush = False
             in_location = False
             in_initial = False
-            in_movement = False
             in_repetition = False
             in_special_repetition = False
             in_hand_internal = False
             # leave in_fusion on
             # leave in_simultaneous on
+            # leave in_movement on
                     
         elif char in handshape_diacritic:
             handshape[-1] += char
@@ -121,12 +121,12 @@ def parse_hamnosys(text,
             in_brush = False
             in_location = False
             in_initial = False
-            in_movement = False
             in_repetition = False
             in_special_repetition = False
             in_hand_internal = False
             # leave in_fusion on
             # leave in_simultaneous on
+            # leave in_movement on
                         
         elif char == orientation_diacritic: 
             orientation[-1] += char
@@ -143,12 +143,12 @@ def parse_hamnosys(text,
             in_contact = False
             in_location = False
             in_initial = False
-            in_movement = False
             in_repetition = False
             in_special_repetition = False
             in_hand_internal = False
             # leave in_fusion on
             # leave in_simultaneous on
+            # leave in_movement on
 
         # characters unique to location
         elif char in location_base:
@@ -167,7 +167,6 @@ def parse_hamnosys(text,
             in_symmetry = False
             in_handshape = False
             in_orientation = False
-            in_movement = False
             in_repetition = False
             in_special_repetition = False
             in_hand_internal = False
@@ -175,6 +174,7 @@ def parse_hamnosys(text,
             # leave in_brush on
             # leave in_fusion on
             # leave in_simultaneous on
+            # leave in_movement on
 
         elif char in location_diacritic:
             location[-1] += char
@@ -203,12 +203,12 @@ def parse_hamnosys(text,
             in_handshape = False
             in_orientation = False
             in_location = False
-            in_movement = False
             in_repetition = False
             in_special_repetition = False
             in_hand_internal = False
             # leave in_fusion on
             # leave in_simultaneous on
+            # leave in_movement on
                 
         # characters unique to movement
         elif char in movement_base:
