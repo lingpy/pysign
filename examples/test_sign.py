@@ -17,7 +17,7 @@ Transcriptions and targets for the parser
     "dominant_orientation": "", # hamextfingeru,hampalmu
     "nondominant_orientation": "",
     "dominant_location": "", # hamchest
-    "nondominant_location: "",
+    "nondominant_location": "",
     "dominant_movement": "", # hammoveo
     "nondominant_movement": ""
     }
@@ -75,7 +75,7 @@ Transcriptions and targets for the parser
       "handshape_change": "",
       "dominant_orientation": "",
       "nondominant_orientation": "",
-      "dominant_location": ["", ""] # beginning and ending locations
+      "dominant_location": ["", ""],# beginning and ending locations
       "nondominant_location": "",
       "dominant_movement": "",
       "nondominant_movement": ""

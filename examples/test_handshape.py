@@ -3,7 +3,7 @@
 Two alternatives for matching handshape symbols.
 """
 import re
-from pysign.parse import translate
+#from pysign.parse import translate
 
 def find_handshape(string, handshape_base="", 
                    handshape_diacritic="",
@@ -66,7 +66,7 @@ def find_handshape(string, handshape_base=""
     "dominant_orientation": "", # hamextfingeru,hampalmu
     "nondominant_orientation": "",
     "dominant_location": "", # hamchest
-    "nondominant_location: "",
+    "nondominant_location": "",
     "dominant_movement": "", # hammoveo
     "nondominant_movement": ""
     }
@@ -125,7 +125,7 @@ find_handshape("          
       "handshape_change": "", # \ue002\ue010\ue00d
       "dominant_orientation": "",
       "nondominant_orientation": "",
-      "dominant_location": ["", ""] # beginning and ending locations
+      "dominant_location": ["", ""], # beginning and ending locations
       "nondominant_location": "",
       "dominant_movement": "",
       "nondominant_movement": ""
@@ -154,7 +154,7 @@ find_handshape("   ")
       "handshape_change": "", # \ue002\ue010\ue00d
       "dominant_orientation": "",
       "nondominant_orientation": "",
-      "dominant_location": ["", ""] # beginning and ending locations
+      "dominant_location": ["", ""], # beginning and ending locations
       "nondominant_location": "",
       "dominant_movement": "",
       "nondominant_movement": ""
