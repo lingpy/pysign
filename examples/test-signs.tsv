@@ -31,7 +31,7 @@ sign	property	expected
 "   "	nondominant['location']	""
 "   "	nondominant['contact']	none
 "   "	nondominant['movement']	""
-"   "	meta['handshape']	"", "", ""
+"   " meta['handshape'] "", "", ""
 "   "	meta['orientation']	"", "", ""
 "   "	meta['contact']	none
 "   "	meta['location']	"", "", ""
